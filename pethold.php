@@ -1,29 +1,29 @@
 <?php
-require_once "config/Ad.php";
-require_once "config/Favs.php";
-$breed1 = ['Волнистые попугаи','Совы','Канарейки'];
-$breed3 = ['Маленькие','Бойцовские','Большие'];
-$breed2 = ['Сфинксы','Пушистые','Гладкошёрстные'];
-$br1 = $breed1[0];
-$br2 = $breed1[1];
-$br3 = $breed1[2];
-    if(isset($_POST['submit'])) {
-        $sp = $_POST['species'];
-        $br = $_POST['breed'];
-        $c = $_POST['city'];
-        if($sp === '2' && $br === '2') {header("Location: pethold1.php");exit();}
-        if($sp === '4' && $c === '1') {header("Location: pethold2.php");exit();}
-        if($sp === '4' && $c === '2') {header("Location: pethold3.php");exit();}
-        if($sp === '4' && $c === '3') {header("Location: pethold4.php");exit();}
-
-    }
+    require_once "config/Ad.php";
+    require_once "config/Favs.php";
+    $breed1 = ['Волнистые попугаи','Совы','Канарейки'];
+    $breed3 = ['Маленькие','Бойцовские','Большие'];
+    $breed2 = ['Сфинксы','Пушистые','Гладкошёрстные'];
+    $br1 = $breed1[0];
+    $br2 = $breed1[1];
+    $br3 = $breed1[2];
     $id_user = 1;
     $ad = Ad::getAd();
     if(isset($_POST['add'])){
         Favs::addToFavs($_POST['add'], $id_user, "pethold");
     } elseif (isset($_POST['delete'])) {
-        Favs::deleteFromFavs($_POST['add'], $id_user, "pethold");
+    Favs::deleteFromFavs($_POST['add'], $id_user, "pethold");
     }
+    if(isset($_POST['submit'])) {
+        $type = $_POST['species'];
+        $subtype = $_POST['breed'];
+        $c = $_POST['city'];
+        if($type !== "null" || $subtype !== "null" || $c !== "null") {
+            $ad = Ad::sortBy($type,$subtype,$c);
+        }
+        else $ad = Ad::getAd();
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,22 +66,22 @@ $br3 = $breed1[2];
         <h1 class="title">Передержка</h1>
         <form action="" method="post" class="choose-form">
             <select class="pet-species-select search-select" name="species">
-                <option value="1" <?= (isset($_POST['species']) && 1 == $_POST['species'])? 'selected' : ''?>>Все</option>
-                <option value="2" <?= (isset($_POST['species']) && 2 == $_POST['species'])? 'selected' : ''?>>Птицы</option>
-                <option value="3" <?= (isset($_POST['species']) && 3 == $_POST['species'])? 'selected' : ''?>>Кошки</option>
-                <option value="4" <?= (isset($_POST['species']) && 4 == $_POST['species'])? 'selected' : ''?>>Собаки</option>
+                <option value="null" <?= (isset($_POST['species']) && 1 == $_POST['species'])? 'selected' : ''?>>Все</option>
+                <option value="Птицы" <?= (isset($_POST['species']) && 2 == $_POST['species'])? 'selected' : ''?>>Птицы</option>
+                <option value="Кошки" <?= (isset($_POST['species']) && 3 == $_POST['species'])? 'selected' : ''?>>Кошки</option>
+                <option value="Собаки" <?= (isset($_POST['species']) && 4 == $_POST['species'])? 'selected' : ''?>>Собаки</option>
               </select>
               <select class="breed-select search-select" name="breed">
-                <option value="1" <?= (isset($_POST['species']) && 1 == $_POST['species'])? 'selected' : ''?>>Все</option>
-                <option value="<?php $br1 ?>" <?= (isset($_POST['species']) && 2 == $_POST['species'])? 'selected' : ''?>>Волнистые попугаи</option>
-                <option value="<?php $br2 ?>" <?= (isset($_POST['species']) && 3 == $_POST['species'])? 'selected' : ''?>>Совы</option>
-                <option value="<?php $br3 ?>" <?= (isset($_POST['species']) && 4 == $_POST['species'])? 'selected' : ''?>>Канарейки</option>
+                <option value="null" <?= (isset($_POST['species']) && 1 == $_POST['species'])? 'selected' : ''?>>Все</option>
+                <option value="null" <?= (isset($_POST['species']) && 2 == $_POST['species'])? 'selected' : ''?>>Волнистые попугаи</option>
+                <option value="null" <?= (isset($_POST['species']) && 3 == $_POST['species'])? 'selected' : ''?>>Совы</option>
+                <option value="null" <?= (isset($_POST['species']) && 4 == $_POST['species'])? 'selected' : ''?>>Канарейки</option>
               </select>
               <select class="city-search-select search-select" name="city">
-                <option value="1" <?= (isset($_POST['species']) && 1 == $_POST['species'])? 'selected' : ''?>>Все</option>
-                <option value="2" <?= (isset($_POST['species']) && 2 == $_POST['species'])? 'selected' : ''?>>Ярославль</option>
-                <option value="3" <?= (isset($_POST['species']) && 3 == $_POST['species'])? 'selected' : ''?>>Москва</option>
-                <option value="4" <?= (isset($_POST['species']) && 4 == $_POST['species'])? 'selected' : ''?>>Вологда</option>
+                <option value="null" <?= (isset($_POST['species']) && 1 == $_POST['species'])? 'selected' : ''?>>Все</option>
+                <option value="Ярославль" <?= (isset($_POST['species']) && 2 == $_POST['species'])? 'selected' : ''?>>Ярославль</option>
+                <option value="Москва" <?= (isset($_POST['species']) && 3 == $_POST['species'])? 'selected' : ''?>>Москва</option>
+                <option value="Вологда" <?= (isset($_POST['species']) && 4 == $_POST['species'])? 'selected' : ''?>>Вологда</option>
               </select>
               <button class="search-input" name="submit">Поиск</button>
         </form>
@@ -92,7 +92,7 @@ $br3 = $breed1[2];
 
                     $item = $ad[$i];
                     ?>
-                <div class="results-item">
+                <div class="results-item" onclick="toAd()">
                     <img src="<?php echo $item['img'] ?>" alt="Фото питомца" width="258" height="212">
                     <div class="results-item__info">
                         <h2 class="info-title"><?php echo $item['title'] ?></h2>
@@ -133,10 +133,10 @@ $br3 = $breed1[2];
                     $favs = Favs::getFavs($id_user);
                     foreach ($favs as $item) {
                 ?>
-                <div class="favourite-item">
+                <div class="favourite-item" onclick="toAd()">
                     <img src="<?php echo $item['img'] ?>" alt="Фото питомца" width="111" height="74">
                     <div class="fav-item__info">
-                        <span class="description"><?php echo $item['about'] ?></span>
+                        <span class="description"><?php echo substr($item['about'],0,94).'...';  ?></span>
                         <span class="place-from-you fav-S"><?php echo $item['distance'] ?>м. от вас</span>
                     </div>
                 </div>
@@ -145,6 +145,11 @@ $br3 = $breed1[2];
         </div>
         
     </div>
+    <script>
+        function toAd(){
+            document.location.href = "./ad.html";
+        }
+    </script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
