@@ -1,0 +1,134 @@
+.navbar-brand {}
+
+@media (min-width: 1200px) {
+  .top-inner {
+    height: 100%;
+    padding-top: 180px;
+    padding-left: 180px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cont {
+    width: 100%;
+    background-image: url("../../assets/img/girl.svg");
+    background-repeat: no-repeat;
+    background-position: right 20% top 55%;
+    height: 100%;
+    background-size: 22vw;
+  }
+}
+
+@media (min-width: 1400px) {
+  .top-inner {
+    height: 100%;
+    padding-top: 215px;
+    padding-left: 180px;
+  }
+}
+
+#main {
+  height: 530px;
+}
+
+@media (min-width: 1400px) {
+  .cont {
+    background-position: right 20% top 88%;
+  }
+}
+
+@media (min-width: 1600px) {
+  .top-inner {
+    height: 100%;
+    padding-top: 330px;
+  }
+}
+
+@media (min-width: 992px) {
+  .cont {
+    background-image: url("../../assets/img/girl.svg");
+    background-repeat: no-repeat;
+    background-position: right 20% top 31%;
+    height: 100%;
+    background-size: 22vw;
+  }
+}
+
+@media (min-width: 1600px) {
+  .cont {
+    background-position: right 20% top 100%;
+  }
+}
+.app {
+  font: "Franklin Gothic Book";
+}
+.banner {
+  margin-left: 54px;
+  margin-right: 46px;
+}
+.select-div {
+  padding-left: 20px;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+select {
+  font: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.city-select {
+  margin-left: 10px;
+  border: 0;
+  outline: none;
+  width: 120px;
+}
+select:not([multiple]) {
+  color: #3D2127;
+  padding-right: 1.2em;
+  background-repeat: no-repeat;
+  background-position: 85% 50% ;
+  background-size: 0.85em auto;
+  background-image: url("data:image/svg+xml,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 1.04907e-06L7 5L12 1.74846e-07L14 1L7 8L-6.11959e-07 1L2 1.04907e-06Z' fill='%233D2127'/%3E%3C/svg%3E");
+}
+.content {
+  display: flex;
+  justify-content: center;
+  gap: 184px;
+  padding-top: 138px;
+}
+.next {
+  position: relative;
+  text-align: center;
+  color: #FFFFFF;
+}
+.img-url {
+  border-radius: 30px;
+  width: 385px;
+  height: 337px;
+}
+.title-url {
+  position: absolute;
+  width: 166px;
+  height: 73px;
+  font-family: 'Franklin Gothic Medium';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 73px;
+  color: #FFFFFF;
+}
+.walking-url .title-url {
+  left: 110px;
+  top: 257px;
+}
+.pethold-url .title-url {
+  left: 10px;
+  top: 257px;
+}

@@ -1,0 +1,216 @@
+.navbar-brand {}
+
+@media (min-width: 1200px) {
+  .top-inner {
+    height: 100%;
+    padding-top: 180px;
+    padding-left: 180px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .cont {
+    width: 100%;
+    background-image: url("../../assets/img/girl.svg");
+    background-repeat: no-repeat;
+    background-position: right 20% top 55%;
+    height: 100%;
+    background-size: 22vw;
+  }
+}
+
+@media (min-width: 1400px) {
+  .top-inner {
+    height: 100%;
+    padding-top: 215px;
+    padding-left: 180px;
+  }
+}
+
+#main {
+  height: 530px;
+}
+
+@media (min-width: 1400px) {
+  .cont {
+    background-position: right 20% top 88%;
+  }
+}
+
+@media (min-width: 1600px) {
+  .top-inner {
+    height: 100%;
+    padding-top: 330px;
+  }
+}
+
+@media (min-width: 992px) {
+  .cont {
+    background-image: url("../../assets/img/girl.svg");
+    background-repeat: no-repeat;
+    background-position: right 20% top 31%;
+    height: 100%;
+    background-size: 22vw;
+  }
+}
+
+@media (min-width: 1600px) {
+  .cont {
+    background-position: right 20% top 100%;
+  }
+}
+
+.banner {
+  margin-left: 54px;
+  margin-right: 46px;
+}
+.select-div {
+  padding-left: 20px;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+select {
+  font: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  text-align-last: center;
+}
+.city-select {
+  border: 0;
+  outline: none;
+  width: 120px;
+}
+.search-select {
+  border-color: #0099B3;
+  border-radius: 5px;
+  width: 183px;
+  height: 28px;
+}
+.search-input {
+  width: 122px;
+  height: 28px;
+  left: 850px;
+  background: #0099B3;
+  border-radius: 5px;
+  border: 0;
+  color: #fff;
+}
+.content {
+  padding-left: 120px;
+  padding-top: 46px;
+  font-family: 'Franklin Gothic Book';
+  color: #3D2127;
+}
+.title {
+  margin-bottom: 20px;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 54px;
+  font-family: 'Franklin Gothic Medium';
+}
+.choose-form {
+  margin-bottom: 63px;
+}
+.content__results {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+.results {
+  height: 100%;
+  padding-right: 21px;
+  grid-column: 1;
+}
+
+.results-item {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  gap: 16px;
+  margin-bottom: 58px;
+}
+.results-item__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 631px;
+  height: 212px;
+  font-family: 'Franklin Gothic Book';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+}
+.info-title {
+  font-family: 'Franklin Gothic Medium';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 87%;
+  margin-bottom: 12px;
+}
+.where {
+  display: flex;
+  flex-direction: column;
+}
+.place-from-you {
+  color: rgba(61, 33, 39, 0.56);
+}
+.price {
+  width: 146px;
+  height: 24px;
+  border: 1px solid #0099B3;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.price-text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17.5px;
+  line-height: 23px;
+  font-family: 'Franklin Gothic Medium';
+}
+.favourite {
+  border-left: 1px solid rgba(61, 33, 39, 0.39);
+  height: 100%;
+  padding: 0 21px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  grid-column: 2;
+}
+.favourite-title {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 21px;
+}
+
+.favourite-item {
+  display: flex;
+  margin-bottom: 27px;
+}
+.fav-item__info {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-left: 5px;
+}
+.fav-S {
+  padding-left: 30px;
+}
+.heart {
+  margin-top: 7px;
+}
+select:not([multiple]) {
+  color: #3D2127;
+  padding-right: 1.2em;
+  background-repeat: no-repeat;
+  background-position: 95% 50% ;
+  background-size: 0.85em auto;
+  background-image: url("data:image/svg+xml,%3Csvg width='14' height='8' viewBox='0 0 14 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 1.04907e-06L7 5L12 1.74846e-07L14 1L7 8L-6.11959e-07 1L2 1.04907e-06Z' fill='%233D2127'/%3E%3C/svg%3E");}
