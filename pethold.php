@@ -196,7 +196,7 @@
             let str = "ad_id=" + elem;
             document.cookie = str;
             document.cookie = "from=pethold";
-            document.location.href = "./ad.html";
+            document.location.href = "./ad.php";
         }
     </script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
