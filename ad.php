@@ -97,21 +97,21 @@
                                 <div class="d-xl-flex d-xxl-flex justify-content-xl-start comment-item">
                                     <div class="comment-image"></div>
                                     <div class="d-xxl-flex flex-column justify-content-xxl-start comment-cont">
-                                        <p class="comment-text comment-name" style="color: #0099B3;">Григорий</p>
+                                        <p class="comment-text comment-name" style="color: #0099B3;">Олег</p>
                                         <p class="comment-text">Прекрасная девушка! Каждый вечер показывала нашего попугая по видео связи. Советую!<br></p>
                                     </div>
                                 </div>
                                 <div class="d-xl-flex d-xxl-flex justify-content-xl-start comment-item">
                                     <div class="comment-image"></div>
                                     <div class="d-xxl-flex flex-column justify-content-xxl-start comment-cont">
-                                        <p class="comment-text comment-name" style="color: #0099B3;">Григорий</p>
+                                        <p class="comment-text comment-name" style="color: #0099B3;">Ярослав</p>
                                         <p class="comment-text">Прекрасная девушка! Каждый вечер показывала нашего попугая по видео связи. Советую!<br></p>
                                     </div>
                                 </div>
                                 <div class="d-xl-flex d-xxl-flex justify-content-xl-start comment-item">
                                     <div class="comment-image"></div>
                                     <div class="d-xxl-flex flex-column justify-content-xxl-start comment-cont">
-                                        <p class="comment-text comment-name" style="color: #0099B3;">Григорий</p>
+                                        <p class="comment-text comment-name" style="color: #0099B3;">Никита</p>
                                         <p class="comment-text">Прекрасная девушка! Каждый вечер показывала нашего попугая по видео связи. Советую!<br></p>
                                     </div>
                                 </div>
