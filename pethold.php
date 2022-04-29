@@ -12,7 +12,7 @@
     if(isset($_POST['add'])){
         Favs::addToFavs($_POST['add'], $id_user, "pethold");
     } elseif (isset($_POST['delete'])) {
-    Favs::deleteFromFavs($_POST['add'], $id_user, "pethold");
+        Favs::deleteFromFavs($_POST['delete'], $id_user, "pethold");
     }
     if(isset($_POST['submit'])) {
         $type = $_POST['species'];
@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,700&amp;display=swap">
     <link rel="stylesheet" href="assets/css/pethold.css">
     <script src="script.js"></script>
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="app" style="font-family: 'Libre Franklin', sans-serif;background-image: url('&quot;assets/img/vector_bg-main.svg&quot;');background-repeat: no-repeat;background-position: 100% top;background-size: 65vw;">
@@ -65,18 +66,12 @@
     <div class="content">
         <h1 class="title">Передержка</h1>
         <form action="" method="post" class="choose-form">
-            <select class="pet-species-select search-select" name="species">
+            <select  id="select-1" class="pet-species-select search-select" name="species">
                 <option value="null" <?= (isset($_POST['species']) && 1 == $_POST['species'])? 'selected' : ''?>>Все</option>
-                <option value="Птицы" <?= (isset($_POST['species']) && 2 == $_POST['species'])? 'selected' : ''?>>Птицы</option>
-                <option value="Кошки" <?= (isset($_POST['species']) && 3 == $_POST['species'])? 'selected' : ''?>>Кошки</option>
-                <option value="Собаки" <?= (isset($_POST['species']) && 4 == $_POST['species'])? 'selected' : ''?>>Собаки</option>
-              </select>
-              <select class="breed-select search-select" name="breed">
+                </select>
+              <select  id="select-2" class="breed-select search-select" name="breed">
                 <option value="null" <?= (isset($_POST['species']) && 1 == $_POST['species'])? 'selected' : ''?>>Все</option>
-                <option value="null" <?= (isset($_POST['species']) && 2 == $_POST['species'])? 'selected' : ''?>>Волнистые попугаи</option>
-                <option value="null" <?= (isset($_POST['species']) && 3 == $_POST['species'])? 'selected' : ''?>>Совы</option>
-                <option value="null" <?= (isset($_POST['species']) && 4 == $_POST['species'])? 'selected' : ''?>>Канарейки</option>
-              </select>
+                </select>
               <select class="city-search-select search-select" name="city">
                 <option value="null" <?= (isset($_POST['species']) && 1 == $_POST['species'])? 'selected' : ''?>>Все</option>
                 <option value="Ярославль" <?= (isset($_POST['species']) && 2 == $_POST['species'])? 'selected' : ''?>>Ярославль</option>
@@ -109,14 +104,18 @@
                     if(Favs::checkFavs($item['id'], $id_user, "pethold")){
                     ?>
                        <form action="" method="post">
-                           <input value="<?php echo $item['id'] ?>" name="delete" type="image" src="./assets/img/heart-1.svg" alt="Кнопка «input»">
+                           <button class="heart-btn" name="delete" value="<?php echo $item['id'] ?>" type="submit" alt="Кнопка «input»">
+                               <img src="./assets/img/heart-1.svg">
+                           </button>
                        </form>
 
                     <?php
                     } else {
                     ?>
                         <form action="" method="post">
-                            <input value="<?php echo $item['id'] ?>" name="add" type="image" src="./assets/img/heart-2.svg" alt="Кнопка «input»">
+                            <button class="heart-btn" name="add" value="<?php echo $item['id'] ?>" type="submit" alt="Кнопка «input»">
+                                <img src="./assets/img/heart-2.svg">
+                            </button>
                         </form>
                     <?php } ?>
                 </div>
@@ -146,8 +145,58 @@
         
     </div>
     <script>
+        let species = ["Птицы", "Кошки", "Собаки", "Аквариумные животные"];
+        let birds = ["Волнистые попугаи", "Совы", "Канарейки"];
+        let cats = ["Персидская", "Рэгдолл ", "Мейн-кун"];
+        let dogs = ["Овчарка", "Бульдог ", "Хаски"];
+        let aqua = ["Рыбы", "Рептилии", "Ящерицы"];
+
+        let slct1 = document.getElementById("select-1");
+        let slct2 = document.getElementById("select-2")
+
+        species.forEach(function addSpecies(item) {
+            let option = document.createElement("option");
+            option.text = item;
+            option.value = item;
+            slct1.appendChild(option);
+        });
+
+        slct1.onchange = function () {
+            slct2.innerHTML = "<option>Все</option>";
+            if (this.value == "Птицы") {
+                addToSlct2(birds);
+            }
+            if(this.value == "Кошки") {
+                addToSlct2(cats);
+            };
+
+            if(this.value == "Собаки") {
+                addToSlct2(dogs);
+            };
+
+            if(this.value == "Аквариумные животные") {
+                addToSlct2(aqua);
+            };
+        }
+
+        function addToSlct2(arr) {
+            arr.forEach(function (item) {
+                let option = document.createElement("option");
+                option.text = item;
+                option.value = item;
+                slct2.appendChild(option);
+            });
+
+        };
+    </script>
+    <script>
         function toAd(){
             document.location.href = "./ad.html";
+        }
+    </script>
+    <script>
+        function deleteFav() {
+
         }
     </script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

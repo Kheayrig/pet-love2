@@ -17,7 +17,7 @@ $breed2 = ['Сфинксы','Пушистые','Гладкошёрстные'];
     if(isset($_POST['add'])){
         Favs::addToFavs($_POST['add'], $id_user, "walking");
     } elseif (isset($_POST['delete'])) {
-        Favs::deleteFromFavs($_POST['add'], $id_user, "walking");
+        Favs::deleteFromFavs($_POST['delete'], $id_user, "walking");
     }
 ?>
 <!DOCTYPE html>
@@ -97,14 +97,18 @@ $breed2 = ['Сфинксы','Пушистые','Гладкошёрстные'];
                         if(Favs::checkFavs($item['id'], $id_user, "walking")){
                             ?>
                             <form action="" method="post">
-                                <input value="<?php echo $item['id'] ?>" name="delete" type="image" src="./assets/img/heart-1.svg" alt="Кнопка «input»">
+                                <button class="heart-btn" name="delete" value="<?php echo $item['id'] ?>" type="submit" alt="Кнопка «input»">
+                                    <img src="./assets/img/heart-1.svg">
+                                </button>
                             </form>
 
                             <?php
                         } else {
                             ?>
                             <form action="" method="post">
-                                <input value="<?php echo $item['id'] ?>" name="add" type="image" src="./assets/img/heart-2.svg" alt="Кнопка «input»">
+                                <button class="heart-btn" name="add" value="<?php echo $item['id'] ?>" type="submit" alt="Кнопка «input»">
+                                    <img src="./assets/img/heart-2.svg">
+                                </button>
                             </form>
                         <?php } ?>
                     </div>

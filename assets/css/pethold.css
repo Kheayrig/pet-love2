@@ -207,6 +207,12 @@ select {
 .heart {
   margin-top: 7px;
 }
+.heart-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+}
 select:not([multiple]) {
   color: #3D2127;
   padding-right: 1.2em;

@@ -15,7 +15,7 @@ class Favs
     public static function addToFavs($id_ad, $id_user, $type): bool {
         $db = new Database();
         $prep = $db->prepare("INSERT INTO favourite (`id_ad`, `id_user`, `type`) VALUES (?,?,?)");
-        $prep->bind_param('ii', $id_ad,$id_user);
+        $prep->bind_param('iis', $id_ad,$id_user, $type);
         $prep->execute();
         $prep->close();
         return true;
@@ -23,7 +23,7 @@ class Favs
     public static function deleteFromFavs($id_ad, $id_user, $type): bool {
         $db = new Database();
         $prep = $db->prepare("DELETE FROM favourite WHERE id_ad = ? AND id_user = ? AND type = ?");
-        $prep->bind_param('ii', $id_ad,$id_user);
+        $prep->bind_param('iis', $id_ad,$id_user, $type);
         $prep->execute();
         $prep->close();
         return true;
