@@ -18,7 +18,7 @@
         $type = $_POST['species'];
         $subtype = $_POST['breed'];
         $c = $_POST['city'];
-        if($type !== "null" || $subtype !== "null" || $c !== "null") {
+        if($type !== "Все" || $subtype !== "Все" || $c !== "Все") {
             $ad = Ad::sortBy($type,$subtype,$c);
         }
         else $ad = Ad::getAd();
@@ -67,13 +67,13 @@
         <h1 class="title">Передержка</h1>
         <form action="" method="post" class="choose-form">
             <select  id="select-1" class="pet-species-select search-select" name="species">
-                <option value="null" <?= (isset($_POST['species']) && 1 == $_POST['species'])? 'selected' : ''?>>Все</option>
+                <option value="Все" >Все</option>
                 </select>
               <select  id="select-2" class="breed-select search-select" name="breed">
-                <option value="null" <?= (isset($_POST['species']) && 1 == $_POST['species'])? 'selected' : ''?>>Все</option>
+                <option value="Все" >Все</option>
                 </select>
               <select class="city-search-select search-select" name="city">
-                <option value="null" <?= (isset($_POST['species']) && 1 == $_POST['species'])? 'selected' : ''?>>Все</option>
+                <option value="Все" <?= (isset($_POST['species']) && 1 == $_POST['species'])? 'selected' : ''?>>Все</option>
                 <option value="Ярославль" <?= (isset($_POST['species']) && 2 == $_POST['species'])? 'selected' : ''?>>Ярославль</option>
                 <option value="Москва" <?= (isset($_POST['species']) && 3 == $_POST['species'])? 'selected' : ''?>>Москва</option>
                 <option value="Вологда" <?= (isset($_POST['species']) && 4 == $_POST['species'])? 'selected' : ''?>>Вологда</option>
@@ -82,12 +82,14 @@
         </form>
         <div class="content__results">
             <div class="results">
-                <?php for($i = 0; $i < 10; $i++){
-                    if($i >= count($ad)) break;
+                <?php
+                if($ad !== null) {
+                    for($i = 0; $i < 10; $i++){
+                        if($i >= count($ad)) break;
 
-                    $item = $ad[$i];
-                    ?>
-                <div class="results-item" onclick="toAd()">
+                        $item = $ad[$i];
+                        ?>
+                <div id="<?php echo $item['id'] ?>" class="results-item" onclick="toAd(this.id)">
                     <img src="<?php echo $item['img'] ?>" alt="Фото питомца" width="258" height="212">
                     <div class="results-item__info">
                         <h2 class="info-title"><?php echo $item['title'] ?></h2>
@@ -119,7 +121,7 @@
                         </form>
                     <?php } ?>
                 </div>
-                <?php } ?>
+                <?php } }?>
             </div>
             <div class="favourite">
                 <div class="favourite-title">
@@ -132,7 +134,7 @@
                     $favs = Favs::getFavs($id_user);
                     foreach ($favs as $item) {
                 ?>
-                <div class="favourite-item" onclick="toAd()">
+                <div id="<?php echo $item['id'] ?>" class="favourite-item" onclick="toAd(this.id)">
                     <img src="<?php echo $item['img'] ?>" alt="Фото питомца" width="111" height="74">
                     <div class="fav-item__info">
                         <span class="description"><?php echo substr($item['about'],0,94).'...';  ?></span>
@@ -190,13 +192,11 @@
         };
     </script>
     <script>
-        function toAd(){
+        function toAd(elem){
+            let str = "ad_id=" + elem;
+            document.cookie = str;
+            document.cookie = "from=pethold";
             document.location.href = "./ad.html";
-        }
-    </script>
-    <script>
-        function deleteFav() {
-
         }
     </script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

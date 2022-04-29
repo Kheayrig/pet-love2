@@ -80,7 +80,7 @@ $breed2 = ['Сфинксы','Пушистые','Гладкошёрстные'];
 
                     $item = $ad[$i];
                     ?>
-                    <div class="results-item" onclick="toAd()">
+                    <div id="<?php echo $item['id'] ?>" class="results-item" onclick="toAd(this.id)">
                         <img src="<?php echo $item['img'] ?>" alt="Фото питомца" width="258" height="212">
                         <div class="results-item__info">
                             <h2 class="info-title"><?php echo $item['title'] ?></h2>
@@ -125,7 +125,7 @@ $breed2 = ['Сфинксы','Пушистые','Гладкошёрстные'];
                 $favs = Favs::getFavs($id_user);
                 foreach ($favs as $item) {
                     ?>
-                    <div class="favourite-item" onclick="toAd()">
+                    <div id="<?php echo $item['id'] ?>" class="favourite-item" onclick="toAd()">
                         <img src="<?php echo $item['img'] ?>" alt="Фото питомца" width="111" height="74">
                         <div class="fav-item__info">
                             <span class="description"><?php echo substr($item['about'],0,94).'...';  ?></span>
@@ -138,7 +138,10 @@ $breed2 = ['Сфинксы','Пушистые','Гладкошёрстные'];
         
     </div>
     <script>
-        function toAd(){
+        function toAd(elem){
+            let str = "ad_id=" + elem;
+            document.cookie = str;
+            document.cookie = "from=walking";
             document.location.href = "./ad.html";
         }
     </script>

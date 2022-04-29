@@ -38,7 +38,7 @@ class Ad
     }
     public static function sortBy($type, $subtype, $city) {
         $db = new Database();
-        if($type === "null" && $subtype === "null") {
+        if($type === "Все" && $subtype === "Все") {
             $prep = $db->prepare("SELECT * FROM `ad` where city = ?");
             $prep->bind_param('s', $city);
             $prep->execute();
@@ -60,7 +60,7 @@ class Ad
                 $i++;
             }
             return $array;
-        } elseif($type === "null" && $city === "null") {
+        } elseif($type === "Все" && $city === "Все") {
             $prep = $db->prepare("SELECT * FROM `ad` where subtype = ?");
             $prep->bind_param('s', $subtype);
             $prep->execute();
@@ -82,7 +82,7 @@ class Ad
                 $i++;
             }
             return $array;
-        } elseif($subtype === "null" && $city === "null") {
+        } elseif($subtype === "Все" && $city === "Все") {
             $prep = $db->prepare("SELECT * FROM `ad` where type = ?");
             $prep->bind_param('s', $type);
             $prep->execute();
@@ -104,7 +104,7 @@ class Ad
                 $i++;
             }
             return $array;
-        } elseif($subtype === "null") {
+        } elseif($subtype === "Все") {
             $prep = $db->prepare("SELECT * FROM `ad` where city = ? and type = ?");
             $prep->bind_param('ss', $city, $type);
             $prep->execute();
@@ -126,7 +126,7 @@ class Ad
                 $i++;
             }
             return $array;
-        } elseif($city === "null") {
+        } elseif($city === "Все") {
             $prep = $db->prepare("SELECT * FROM `ad` where subtype = ? and type = ?");
             $prep->bind_param('ss', $subtype, $type);
             $prep->execute();
